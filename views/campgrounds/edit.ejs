@@ -1,0 +1,27 @@
+<% include  ../partials/header.ejs %>
+    <div class='row' style='text-align:center;'>
+        <h1> Edit <%= yelpCampGrounds.name%>: </h1>
+        
+        <div style='width:30%; margin: 40px auto;'>
+            <form action="/campgrounds/<%= yelpCampGrounds._id%>?_method=PUT" method="POST">
+                <div class='form-group'>
+                    <input class='form-control' type="text" name="campground[name]" value="<%=yelpCampGrounds.name%>">    
+                </div>
+                <div class='form-group'>
+                     <input class='form-control' type="text" name="campground[image]" value="<%=yelpCampGrounds.image%>">
+                </div>
+                <div class='form-group'>
+                     <input class='form-control' type="text" name="campground[description]" value="<%= yelpCampGrounds.description%>">
+                </div>
+                <div class='form-group'>
+                    <input class='form-control' type='number' name='campground[price]' value='<%= yelpCampGrounds.price %>' min='0.01' step='0.01'>
+                </div>
+                 <div class='form-group'>
+                    <button class='btn btn-primary btn-lg btn-block'>Submit</button>
+                </div>
+                
+            </form> 
+            <a href="/campgrounds/<%= yelpCampGrounds._id%>">Go Back</a>
+        </div>
+    </div>   
+<% include  ../partials/footer.ejs %>

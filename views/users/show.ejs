@@ -1,0 +1,39 @@
+<% include  ../partials/header.ejs %>
+</div>
+        <div id='content-section_header_user'>
+            <div class='container'>
+                <h3 id='userCampgrounds'><%= user.username %>'s Campgrounds</h3>
+            </div>
+        </div>
+        <div class='container'>
+        <div class="row"> 
+            <div class="col-md-4">
+                <div class='card'>
+                    <% if(user.avatar != null) {%>
+                        <img class='card-img-top' src="<%= user.avatar %>" alt="user profile image" style="width: 100%;">
+                     <% } else { %>
+                        <img class='card-img-top' src="https://www.imsa-search.com/wp-content/uploads/2018/06/avatar.png" alt='user profile image' style='width: 100%;'>
+                    <% } %>
+                     <h1 class='card-title'><%=user.username %></h1>
+                     <div class='card-body'>
+                            <h4><%=user.firstName %> <%=user.lastName%> </h4>
+                            <a href="mailto:<%= user.email %>"><%= user.email %></a>
+                            <p class='card-text'> I'm just a description text that I need to make editable at some point!</p>
+                     </div>
+                </div>
+            </div>
+            
+            <div class="col-md-8">
+                <div>
+                        <% yelpCampGrounds.forEach(function(yelpCampGrounds) { %>
+                        <div id='userCampName'>
+                             <a href='/campgrounds/<%= yelpCampGrounds.id %>'><%=     yelpCampGrounds.name %></a>
+                        </div>
+                        <div id='userCampDesc'>
+                            <p><%= yelpCampGrounds.description %></p>
+                        </div>
+                        <% }); %>
+                </div>
+            </div>
+        </div>
+<% include  ../partials/footer.ejs %>

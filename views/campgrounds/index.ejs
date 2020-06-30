@@ -1,0 +1,68 @@
+<% include ../partials/header.ejs %>
+</div>
+    <header>
+        <div class='background'>
+            <div class="hero">
+					<div class="hero-img" title="YelpCamp" style="background-image:url('https://www.mountainphotography.com/images/xl/20080321-Needles-Winter-Camp.jpg');">
+						<div class="row header-row" style="margin-left: 0px; margin-right: 0px;">
+								<div class="header container">
+									<div class="slide-content">
+										<div class="headline-container black-trans">
+											<h1>Welcome to YelpCamp Campgrounds</h1>
+											<p>Share and relish in our community of wonderful campgrounds. Constantly updated by real site goers and nature lovers like the rest of us! Join and share your own experiences and get more people out there to Yelpcamp's campgrounds!</p>
+											<a class="btn btn-primary btn-big-blue btn-border limit-width scroll-to" href="/campgrounds/new">Add a new campground <span class="glyphicon glyphicon-chevron-right"></span></a>
+										</div>
+									</div>
+								</div>
+						</div>
+					</div>
+			</div>
+		</div>
+    </header>
+<div id="campgroundsHeader" class="content-section">
+			<div class="content-section_header">
+				<div class="container" >
+					<div class="row">
+						<div class="col-sm-10 col-sm-push-1 col-md-8 col-md-push-2">
+							<h3>Here are the wonderful YelpCamp Campgrounds</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container" id="campgroundDisplay">
+				<div class="row page-content">
+                            <div class ='row text-center' style='display:flex; flex-wrap: wrap;'>
+                               <% yelpCampGrounds.forEach(function(camps){ %> 
+                                        <div class='well'>
+                                        	<div class='media'>
+	                                        	<img class='pull-left resize' src ="<%= camps.image %>">
+	                                        	<div class='media-body'>
+	                                        		<div class='media-heading'>
+	                                        			<h4 id='indexCampName' class='text-left'><%= camps.name %>
+	                                        			<span id='indexCampUsername' class='pull-right'>By: <%= camps.author.username %></span></h4>
+	                                        		</div>
+	                                        		<p id='indexDescription'><%= camps.description %></p>
+	                                        	</div>
+	                                        	<div class='media-footer'>
+	                                        		<% if (camps.rating === 0) { %>
+	                                        			<em class='pull-left'> No reviews yet.</em>
+	                                        		<% } else { %>
+	                                        			<span class="pull-left fa fa-star checked"></span>
+                    									<span class="pull-left fa fa-star <% if (camps.rating > 1.5) { %> checked <% } %>"></span>
+                    									<span class="pull-left fa fa-star <% if (camps.rating > 2.5) { %> checked <% } %>"></span>
+                    									<span class="pull-left fa fa-star <% if (camps.rating > 3.5) { %> checked <% } %>"></span>
+                    									<span class="pull-left fa fa-star <% if (camps.rating > 4.5) { %> checked <% } %>"></span>
+                									<% } %>
+	                                            	<p>
+	                                                	<a href="/campgrounds/<%= camps._id %>" class="btn btn-primary pull-right">More Info</a>
+	                                        		</p>
+                                        		</div>
+                                        </div>
+                                    </div>
+                                <% }); %>
+                        </div>
+					</div>
+			</div>
+</div>
+ 
+<% include  ../partials/footer.ejs %>
